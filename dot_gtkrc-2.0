@@ -1,0 +1,10 @@
+
+# Created by lxqt-config-appearance (DO NOT EDIT!)
+gtk-theme-name = "Sweet-Dark"
+gtk-icon-theme-name = "BeautyLine"
+gtk-font-name = "Ubuntu 12"
+gtk-button-images = 1
+gtk-menu-images = 1
+gtk-toolbar-style = GTK_TOOLBAR_BOTH_HORIZ
+gtk-cursor-theme-name = Sweet-cursors
+gtk-cursor-theme-size = 22
