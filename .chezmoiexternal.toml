@@ -1,0 +1,4 @@
+# My AwesomeWM config
+[".config/awesome"]
+type = "git-repo"
+url = "https://github.com/SaintRyoh/rabbithole.git"
