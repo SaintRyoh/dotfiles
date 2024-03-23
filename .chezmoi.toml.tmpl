@@ -1,0 +1,20 @@
+# Sync Profile:
+#   "full_sync" - configs and install requisite packages for the configs
+#   "sync" - configs only
+#   "partial_sync" - only configs for which we have the requisite packages
+{{ $profile_map := dict "full_sync" "1" "sync" "2" "partial_sync" "3" -}}
+{{ $sync_profile := promptChoice `
+Choose a sync profile:
+  1) full_sync - configs and install requisite packages for the configs
+  2) sync - configs only
+  3) partial_sync - only configs for which we have the requisite packages (default)
+` (values $profile_map) "3" -}}
+[sync_profile]
+current="{{ index ( keys $profile_map ) (sub ($sync_profile | atoi) 1) }}"
+    [sync_profile.types]
+    {{ range $key, $value := $profile_map }}
+    {{- $key }}={{ $value | atoi }}
+    {{ end }}
+[hooks.read-source-state.pre]
+    command = ".local/share/chezmoi/.bootstrap-pacapt.sh"
+{{ writeToStdout "Sync Profile: " $sync_profile }}
