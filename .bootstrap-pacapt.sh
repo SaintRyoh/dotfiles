@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Bootstraping pacapt"
+echo "Bootstraping pacapt" 
 
 [[ ! -d $HOME/.local/bin ]] && mkdir -p $HOME/.local/bin && PATH=$HOME/.local/bin:$PATH
 
@@ -13,4 +13,4 @@ echo "Bootstraping pacapt"
     } \
 &&  chmod 755 $HOME/.local/bin/pacapt 
 
-[[ -x "$(which pacapt)" ]] && echo "\tpacapt is ready to use" || echo "\tpacapt is not installed"
+[[ -x "$(which pacapt)" ]] && printf "\tpacapt is ready to use\n" || printf "\tpacapt is not installed\n"
