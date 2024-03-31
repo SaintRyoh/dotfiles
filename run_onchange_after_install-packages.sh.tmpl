@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# if not .install_packages is true then exit
+{{ if not .install_packages }}
+    exit 0
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+    sudo pacapt -Sy
+    {{ range .packages.linux}}
+        sudo pacapt -S {{.}}
+    {{ end }}
+{{ end }}
