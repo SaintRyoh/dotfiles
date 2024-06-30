@@ -1,0 +1,65 @@
+"  VIM reset
+""  No compatibility with vi
+set nocompatible 
+
+""  some default functionality in vim is provided by plugins
+filetype plugin on
+
+
+" Invisible Characters
+"" Show invisible characters by default
+set list
+
+"" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+"" help: 'listchars'
+set listchars=tab:\|\ ,eol:¬,space:·
+
+"" Invisible character colors 
+highlight NonText ctermfg=240
+highlight SpecialKey ctermfg=240
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+"set expandtab
+
+" Turn on syntax highlighting
+syntax on
+" Enable file type detection
+filetype on
+
+" Show line numbers
+set number
+"" toggle between relative and sequential numbers
+nmap <leader>R :set relativenumber!<CR>
+
+" Set the cursor to a block in normal mode
+"set guicursor=n:block
+
+" Optional: Set the cursor to a line in insert mode
+"set guicursor+=i:ver100
+
+" Searching
+set ignorecase
+set hlsearch
+set wrapscan
+
+
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+	autocmd FileType make setlocal noexpandtab
+	autocmd FileType yaml setlocal expandtab
+
+  " Treat .rss files as XML
+	autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+	" Set cursor to block in insert mode
+	autocmd InsertEnter * set cursorline
+	autocmd InsertLeave * set nocursorline
+
+endif
